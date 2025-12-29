@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+{{ content }}
+
+<section class="home-posts" id="posts">
+  <div class="home-posts__inner">
+    <h2 class="home-posts__title">Our writing</h2>
+
+    <div class="post-list">
+      {%- for post in site.posts limit: 10 -%}
+        <hr class="post-sep" />
+
+        <div class="post-row">
+          <div class="post-row__main">
+            <h3 class="post-row__title">
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+            {%- if post.excerpt -%}
+              <div class="post-row__excerpt">
+                {{ post.excerpt | strip_html | truncatewords: 28 }}
+                <a class="post-row__more" href="{{ post.url | relative_url }}">Read more</a>
+              </div>
+            {%- endif -%}
+          </div>
+
+          <div class="post-row__meta">
+            <a class="post-row__date" href="{{ post.url | relative_url }}">
+              {{ post.date | date: "%b %-d, %Y" }}
+            </a>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+

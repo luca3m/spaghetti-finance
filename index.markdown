@@ -1,0 +1,28 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: home
+---
+
+<section class="home-hero">
+  <div class="home-hero__inner">
+    <div class="home-hero__copy">
+      <h1 class="wp-block-heading has-text-align-center has-x-large-font-size">Life as US expats is complicated</h1>
+      <p style="margin-top:var(--wp--preset--spacing--10);margin-bottom:var(--wp--preset--spacing--10)">
+        We were born and grew up in Italy, we later became US citizens after living many years in the United States. When we decided to actually move back to our original country, we slowly learned that there are a lot of financial and other implications to care about.
+      </p>
+      <p style="margin-top:var(--wp--preset--spacing--10);margin-bottom:var(--wp--preset--spacing--10)">
+        So we decided to share all the information we learned along the way, so this journey could be easier for other people.
+      </p>
+      <p style="margin-top:var(--wp--preset--spacing--10);margin-bottom:var(--wp--preset--spacing--10)">
+        <a href="{{ '/team/' | relative_url }}">More about us</a>
+      </p>
+    </div>
+
+    <figure class="home-hero__image wp-block-image alignwide size-large is-style-rounded">
+      <img src="{{ '/assets/2024/03/us-expat-mini.jpg' | relative_url }}" alt="" />
+    </figure>
+  </div>
+</section>
+

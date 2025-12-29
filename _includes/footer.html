@@ -1,0 +1,24 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__col">
+      <a class="site-brand" href="{{ '/' | relative_url }}">
+        <span class="site-title site-title--sm">{{ site.title }}</span>
+      </a>
+      {%- if site.description -%}
+        <p class="site-tagline">{{ site.description }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="site-footer__col">
+      <h3 class="site-footer__heading">About</h3>
+      <nav class="site-footer__nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="{{ '/team/' | relative_url }}">Team</a></li>
+          <li><a href="mailto:info@spaghettifinance.com">Contact us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+

@@ -1,0 +1,60 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post__header">
+    <h1 class="post__title">{{ page.title }}</h1>
+    <div class="post__meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+    </div>
+  </header>
+
+  {%- if page.hero_image -%}
+    <figure class="post__hero">
+      <img
+        src="{{ page.hero_image | relative_url }}"
+        alt="{{ page.hero_image_alt | default: page.title | escape }}"
+        loading="eager"
+        decoding="async"
+      />
+    </figure>
+  {%- endif -%}
+
+  <div class="post__content entry-content">
+    {{ content }}
+  </div>
+
+  {%- if page.tags and page.tags.size > 0 -%}
+    <nav class="post-tags" aria-label="Post tags">
+      <ul class="post-tags__list">
+        {%- for t in page.tags -%}
+          <li class="post-tags__item"><span class="post-tags__tag">{{ t }}</span></li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+  {%- endif -%}
+
+  {%- comment -%}
+    Continue reading: pick 3 posts "randomly" at build time (seeded by site.time),
+    excluding the current post. This avoids needing plugins for true randomness.
+  {%- endcomment -%}
+  {%- assign candidates = site.posts | where_exp: "p", "p.url != page.url" -%}
+  {% assign random_posts = candidates | sample: 3 %}
+  {%- if random_posts.size > 0 -%}
+    <section class="continue-reading" aria-label="Continue reading">
+      <h2 class="continue-reading__title">Continue reading</h2>
+      <div class="continue-reading__grid">
+        {%- for p in random_posts -%}
+          <article class="continue-reading__item">
+            <a class="continue-reading__link" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+            <div class="continue-reading__date">{{ p.date | date: "%-d %B %Y" }}</div>
+          </article>
+        {%- endfor -%}
+      </div>
+      <hr class="continue-reading__sep" />
+    </section>
+  {%- endif -%}
+</article>
+
+
