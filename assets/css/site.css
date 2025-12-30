@@ -387,6 +387,7 @@ hr.is-style-wide {
   }
 }
 .continue-reading__link {
+  color: var(--wp--preset--color--contrast);
   display: inline-block;
   font-weight: 650;
   font-size: 1.4rem;
