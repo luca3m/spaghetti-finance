@@ -37,12 +37,12 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   font-size: 17px;
   line-height: 1.6;
-  color: #111827;
+  color: var(--wp--preset--color--contrast);
   background: var(--wp--preset--color--base);
 }
 
-a { color: var(--wp--preset--color--contrast); text-decoration: none; }
-a:hover { text-decoration: underline; }
+a { color: var(--wp--preset--color--custom-sky-600); text-decoration: none; }
+a:hover { color: var(--wp--preset--color--contrast); text-decoration: underline; }
 
 .skip-link {
   position: absolute;
@@ -120,7 +120,7 @@ a:hover { text-decoration: underline; }
 }
 .site-tagline {
   margin: 10px 0 0 0;
-  color: rgba(17, 24, 39, 0.7);
+  color: var(--wp--preset--color--contrast-2);
   max-width: 42ch;
 }
 .site-footer__heading {
@@ -333,9 +333,9 @@ hr.is-style-wide {
   font-size: 1.5rem;
   line-height: 1.1;
 }
-.post-row__excerpt { color: rgba(17, 24, 39, 0.72); }
+.post-row__excerpt { color: var(--wp--preset--color--contrast-2); }
 .post-row__more { margin-left: 6px; white-space: nowrap; }
-.post-row__date { color: rgba(17, 24, 39, 0.72); }
+.post-row__date { color: var(--wp--preset--color--contrast-2); }
 
 /* Post + page */
 .post, .page {
@@ -345,7 +345,7 @@ hr.is-style-wide {
 }
 .post__header, .page__header { margin-bottom: var(--wp--preset--spacing--20); }
 .post__title, .page__title { margin: 0; line-height: 1.1; }
-.post__meta { margin-top: 10px; color: rgba(17, 24, 39, 0.65); }
+.post__meta { margin-top: 10px; color: var(--wp--preset--color--contrast-2); }
 .post__hero {
   margin: 0 0 var(--wp--preset--spacing--20) 0;
   overflow: hidden;
@@ -389,7 +389,7 @@ hr.is-style-wide {
 }
 .continue-reading__date {
   margin-top: 14px;
-  color: rgba(17, 24, 39, 0.72);
+  color: var(--wp--preset--color--contrast-2);
   font-size: 1.15rem;
 }
 .continue-reading__sep {
@@ -422,6 +422,7 @@ hr.is-style-wide {
   line-height: 1.1;
   text-decoration: none;
 }
+.entry-content a { text-decoration: underline; text-underline-offset: 3px; }
 .entry-content p { margin: 0 0 1rem 0; }
 .entry-content ul, .entry-content ol { padding-left: 1.25rem; }
 
@@ -454,7 +455,7 @@ hr.is-style-wide {
 }
 .entry-content figure.wp-block-table figcaption {
   margin-top: 0.5rem;
-  color: rgba(17, 24, 39, 0.65);
+  color: var(--wp--preset--color--contrast-2);
   font-size: 0.95rem;
 }
 
