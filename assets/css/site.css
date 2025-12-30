@@ -136,6 +136,9 @@ a:hover { color: var(--wp--preset--color--contrast); text-decoration: underline;
   gap: 8px;
 }
 
+.site-footer a { color: var(--wp--preset--color--contrast); text-decoration: none; }
+.site-footer a:hover { color: var(--wp--preset--color--custom-sky-600); text-decoration: underline; }
+
 /* WP-ish block helpers */
 .wp-block-group.alignfull,
 .alignfull { width: 100%; }
