@@ -1,6 +1,46 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+{%- comment -%}
+  Meta + social sharing (Open Graph / Twitter)
+  Override per page/post with front matter:
+  - description
+  - og_image (absolute or site-relative)
+  - image (absolute or site-relative)
+  - hero_image (site-relative)
+{%- endcomment -%}
+{%- assign meta_title = page.title | default: site.title -%}
+{%- if page.title and page.title != site.title -%}
+  {%- assign meta_title = page.title | append: " | " | append: site.title -%}
+{%- endif -%}
+
+{%- assign meta_description = nil -%}
+{%- if page.description -%}
+  {%- assign meta_description = page.description -%}
+{%- elsif page.excerpt -%}
+  {%- assign meta_description = page.excerpt -%}
+{%- elsif site.description -%}
+  {%- assign meta_description = site.description -%}
+{%- endif -%}
+{%- if meta_description -%}
+  {%- assign meta_description = meta_description | strip_html | strip_newlines | strip | escape -%}
+{%- endif -%}
+
+{%- assign meta_url = page.url | absolute_url -%}
+{%- assign meta_type = "website" -%}
+{%- if page.layout == "post" or page.collection == "posts" -%}
+  {%- assign meta_type = "article" -%}
+{%- endif -%}
+
+{%- assign meta_image = page.og_image | default: page.image | default: page.hero_image | default: site.default_og_image -%}
+{%- if meta_image -%}
+  {%- if meta_image contains "://" -%}
+    {%- assign meta_image_abs = meta_image -%}
+  {%- else -%}
+    {%- assign meta_image_abs = meta_image | absolute_url -%}
+  {%- endif -%}
+{%- endif -%}
+
 <title>
   {%- if page.title and page.title != site.title -%}
     {{ page.title }} | {{ site.title }}
@@ -9,10 +49,49 @@
   {%- endif -%}
 </title>
 
-{%- if page.excerpt -%}
-  <meta name="description" content="{{ page.excerpt | strip_html | strip_newlines | escape }}" />
-{%- elsif site.description -%}
-  <meta name="description" content="{{ site.description | strip_html | strip_newlines | escape }}" />
+{%- if meta_description -%}
+  <meta name="description" content="{{ meta_description }}" />
+{%- endif -%}
+
+<link rel="canonical" href="{{ meta_url }}" />
+
+<meta property="og:site_name" content="{{ site.title | escape }}" />
+<meta property="og:type" content="{{ meta_type }}" />
+<meta property="og:title" content="{{ meta_title | strip_html | strip_newlines | strip | escape }}" />
+{%- if meta_description -%}
+  <meta property="og:description" content="{{ meta_description }}" />
+{%- endif -%}
+<meta property="og:url" content="{{ meta_url }}" />
+{%- if meta_image_abs -%}
+  <meta property="og:image" content="{{ meta_image_abs }}" />
+{%- endif -%}
+
+{%- if meta_type == "article" -%}
+  {%- if page.date -%}
+    <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+  {%- endif -%}
+  {%- if page.tags and page.tags.size > 0 -%}
+    {%- for t in page.tags -%}
+      <meta property="article:tag" content="{{ t | escape }}" />
+    {%- endfor -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- comment -%} Twitter cards {%- endcomment -%}
+{%- if meta_image_abs -%}
+  <meta name="twitter:card" content="summary_large_image" />
+{%- else -%}
+  <meta name="twitter:card" content="summary" />
+{%- endif -%}
+<meta name="twitter:title" content="{{ meta_title | strip_html | strip_newlines | strip | escape }}" />
+{%- if meta_description -%}
+  <meta name="twitter:description" content="{{ meta_description }}" />
+{%- endif -%}
+{%- if meta_image_abs -%}
+  <meta name="twitter:image" content="{{ meta_image_abs }}" />
+{%- endif -%}
+{%- if site.twitter_username -%}
+  <meta name="twitter:site" content="@{{ site.twitter_username | remove: '@' | escape }}" />
 {%- endif -%}
 
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />

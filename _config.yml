@@ -27,6 +27,14 @@ url: "https://spaghettifinance.com" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  jekyll
 
+# Social sharing defaults (Open Graph / Twitter)
+# You can override per post/page via front matter:
+# - description: Custom meta/OG description (otherwise excerpt/site.description)
+# - og_image: Absolute URL or site-relative path to share image
+# - image: Alternate key for share image (also accepts absolute or site-relative)
+# - hero_image: Reused as share image if set
+default_og_image: /assets/2024/06/logo.png
+
 # Build settings
 plugins:
   - jekyll-feed
