@@ -293,6 +293,9 @@ hr.is-style-wide {
   max-width: 600px;
 }
 
+.home-hero__copy a { color: var(--wp--preset--color--contrast); text-decoration: underline; }
+.home-hero__copy a:hover { color: var(--wp--preset--color--custom-sky-600); text-decoration: underline; }
+
 /* Desktop: keep image to the RIGHT of the copy */
 @media (min-width: 860px) {
   .home-hero__inner {
