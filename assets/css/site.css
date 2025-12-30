@@ -333,9 +333,17 @@ hr.is-style-wide {
   font-size: 1.5rem;
   line-height: 1.1;
 }
-.post-row__excerpt { color: var(--wp--preset--color--contrast-2); }
+.post-row__title a { color: var(--wp--preset--color--contrast); }
+.post-row__title a:hover { color: var(--wp--preset--color--custom-sky-600); }
+
+.post-row__excerpt { color: var(--wp--preset--color--contrast); }
+.post-row__excerpt a { color: var(--wp--preset--color--contrast); text-decoration: underline; text-underline-offset: 3px; }
+.post-row__excerpt a:hover { color: var(--wp--preset--color--custom-sky-600); }
+
 .post-row__more { margin-left: 6px; white-space: nowrap; }
-.post-row__date { color: var(--wp--preset--color--contrast-2); }
+.post-row__meta { color: var(--wp--preset--color--contrast-2); }
+.post-row__meta a { color: inherit; text-decoration: none; }
+.post-row__meta a:hover { color: var(--wp--preset--color--contrast); text-decoration: underline; }
 
 /* Post + page */
 .post, .page {
